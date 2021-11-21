@@ -48,4 +48,8 @@ public class StudentDB {
     public Optional<Student> findById(String id) {
         return Optional.ofNullable(students.get(id));
     }
+
+    public void printIds() {
+        students.keySet().forEach(System.out::println);
+    }
 }

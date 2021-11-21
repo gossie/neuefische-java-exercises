@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class StudentDBTest {
@@ -40,5 +41,11 @@ class StudentDBTest {
         var studentDB = new StudentDB(List.of(new Student("eins", "eins", 1), new Student("zwei", "zwei", 2), new Student("drei", "drei", 3)));
         studentDB.removeStudent("eins eins");
         assertTrue(studentDB.list().containsAll(List.of(new Student("zwei", "zwei", 2), new Student("drei", "drei", 3))));
+    }
+
+    @Test
+    void testThatThereAreNoDuplicateNames() {
+        var studentDB = new StudentDB(List.of(new Student("eins", "eins", 1), new Student("zwei", "zwei", 2), new Student("drei", "drei", 3)));
+        assertThrows(RuntimeException.class, () -> studentDB.addStudent(new Student("zwei", "zwei", 2)));
     }
 }

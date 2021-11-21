@@ -43,7 +43,7 @@ public class Student {
     }
 
     public String getFullName() {
-        return "André Schreck";
+        return firstname + " " + lastname;
     }
 
     @Override

@@ -36,6 +36,9 @@ public class StudentDB {
     }
 
     public void addStudent(Student student) {
+        if (students.containsKey(student.getFullName())) {
+            throw new RuntimeException("student is already present");
+        }
         students.put(student.getFullName(), student);
     }
 

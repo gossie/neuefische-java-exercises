@@ -1,9 +1,11 @@
 package de.neuefische.java.week2.studentdb.map;
 
 import java.util.Objects;
+import java.util.UUID;
 
 public class Student {
 
+    private final String id = UUID.randomUUID().toString();
     private String firstname;
     private String lastname;
     private int age;
@@ -16,6 +18,10 @@ public class Student {
 
     public Student() {
         this("", "", 0);
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getFirstname() {

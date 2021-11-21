@@ -1,10 +1,9 @@
 package de.neuefische.java.week2.studentdb.map;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -16,12 +15,12 @@ public class StudentDB {
         this.students.putAll(
                 students
                         .stream()
-                        .collect(Collectors.toMap(s -> s.getFirstname() + " " + s.getLastname(), Function.identity()))
+                        .collect(Collectors.toMap(Student::getId, Function.identity()))
         );
     }
 
     public List<Student> list() {
-        return Collections.unmodifiableList(new ArrayList<>(students.values()));
+        return List.copyOf(students.values());
     }
 
     public Student randomStudent() {
@@ -36,13 +35,17 @@ public class StudentDB {
     }
 
     public void addStudent(Student student) {
-        if (students.containsKey(student.getFullName())) {
+        if (students.containsKey(student.getId())) {
             throw new RuntimeException("student is already present");
         }
-        students.put(student.getFullName(), student);
+        students.put(student.getId(), student);
     }
 
     public void removeStudent(String fullName) {
         students.remove(fullName);
+    }
+
+    public Optional<Student> findById(String id) {
+        return Optional.ofNullable(students.get(id));
     }
 }

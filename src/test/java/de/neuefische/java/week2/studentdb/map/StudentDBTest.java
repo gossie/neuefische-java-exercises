@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -45,7 +47,21 @@ class StudentDBTest {
 
     @Test
     void testThatThereAreNoDuplicateNames() {
+        var studentToBeAddedTwice = new Student("zwei", "zwei", 2);
+        var studentDB = new StudentDB(List.of(new Student("eins", "eins", 1), studentToBeAddedTwice, new Student("drei", "drei", 3)));
+        assertThrows(RuntimeException.class, () -> studentDB.addStudent(studentToBeAddedTwice));
+    }
+
+    @Test
+    void testThatStudentIsFound() {
+        var studentToBeSearched = new Student("zwei", "zwei", 2);
+        var studentDB = new StudentDB(List.of(new Student("eins", "eins", 1), studentToBeSearched, new Student("drei", "drei", 3)));
+        assertEquals(studentToBeSearched, studentDB.findById(studentToBeSearched.getId()).orElseThrow());
+    }
+
+    @Test
+    void testThatStudentIsNotFound() {
         var studentDB = new StudentDB(List.of(new Student("eins", "eins", 1), new Student("zwei", "zwei", 2), new Student("drei", "drei", 3)));
-        assertThrows(RuntimeException.class, () -> studentDB.addStudent(new Student("zwei", "zwei", 2)));
+        assertFalse(studentDB.findById("anyId").isPresent());
     }
 }

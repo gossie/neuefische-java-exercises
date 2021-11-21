@@ -1,4 +1,4 @@
-package de.neuefische.java.week2;
+package de.neuefische.java.week2.studentdb.array;
 
 import java.util.Objects;
 

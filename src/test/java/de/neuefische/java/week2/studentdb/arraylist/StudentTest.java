@@ -1,8 +1,8 @@
-package de.neuefische.java.week2;
+package de.neuefische.java.week2.studentdb.arraylist;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class StudentTest {
 

@@ -2,8 +2,8 @@ package de.neuefische.java.week1;
 
 public class Week1 {
 
-    public static final String WARNING_MESSAGE = "Zu viele Personen";
-    public static final String OK_MESSAGE = "Maximale Personenzahl nicht überschritten";
+    private static final String WARNING_MESSAGE = "Zu viele Personen";
+    private static final String OK_MESSAGE = "Maximale Personenzahl nicht überschritten";
 
     public static void main(String... args) {
         System.out.println("Hallo Kurs!");

@@ -1,22 +1,23 @@
-package de.neuefische.java.week2.studentdb.array;
+package de.neuefische.java.week2.studentdb.record;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class StudentDBTest {
 
     @Test
     void testThatAllStudentsAreReturned() {
-        var studentDB = new StudentDB(new Student[]{new Student(), new Student()});
-        assertArrayEquals(new Student[]{new Student(), new Student()}, studentDB.list());
+        var studentDB = new StudentDB(new Student[]{new Student("eins", "eins", 1), new Student("zwei", "zwei", 2)});
+        assertArrayEquals(new Student[]{new Student("eins", "eins", 1), new Student("zwei", "zwei", 2)}, studentDB.list());
     }
 
     @Test
     void testThaAStudentIsAdded() {
-        var studentDB = new StudentDB(new Student[]{new Student(), new Student()});
-        studentDB.addStudent(new Student());
-        assertArrayEquals(new Student[]{new Student(), new Student(), new Student()}, studentDB.list());
+        var studentDB = new StudentDB(new Student[]{new Student("eins", "eins", 1), new Student("zwei", "zwei", 2)});
+        studentDB.addStudent(new Student("drei", "drei", 3));
+        assertArrayEquals(new Student[]{new Student("eins", "eins", 1), new Student("zwei", "zwei", 2), new Student("drei", "drei", 3)}, studentDB.list());
     }
 
     @Test

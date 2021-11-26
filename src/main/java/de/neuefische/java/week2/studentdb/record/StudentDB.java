@@ -1,4 +1,4 @@
-package de.neuefische.java.week2.studentdb.array;
+package de.neuefische.java.week2.studentdb.record;
 
 import java.util.Arrays;
 

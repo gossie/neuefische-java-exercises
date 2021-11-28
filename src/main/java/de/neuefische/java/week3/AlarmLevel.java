@@ -13,6 +13,8 @@ public enum AlarmLevel {
     }
 
     public String getMessage(int numberOfCustomers) {
-        return numberOfCustomers <= threshold ? "Maximale Personenzahl nicht überschritten" : "Zu viele Personen";
+        return numberOfCustomers <= threshold
+                ? "Maximale Personenzahl nicht überschritten"
+                : "Zu viele Personen";
     }
 }

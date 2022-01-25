@@ -1,4 +1,4 @@
-package de.neuefische.java.week2.shopping;
+package com.github.gossie.neuefische.backend.shopping;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -6,6 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class ProductRepository {
 
     private final Map<String, Product> products = new HashMap<>() {

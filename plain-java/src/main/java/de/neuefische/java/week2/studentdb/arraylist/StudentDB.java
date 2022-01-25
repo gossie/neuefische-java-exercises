@@ -1,7 +1,6 @@
 package de.neuefische.java.week2.studentdb.arraylist;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 

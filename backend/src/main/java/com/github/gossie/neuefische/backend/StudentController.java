@@ -2,6 +2,7 @@ package com.github.gossie.neuefische.backend;
 
 import java.util.Collection;
 
+import org.springframework.boot.web.server.WebServerException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,7 +30,8 @@ public class StudentController {
 
     @GetMapping(path = "/{id}")
     public Student getStudent(@PathVariable String id) {
-        return studentService.determineStudent(id);
+        return studentService.determineStudent(id)
+                .orElseThrow(NotFoundException::new);
     }
 
     @PostMapping

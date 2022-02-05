@@ -6,7 +6,7 @@ import java.util.Objects;
 public class PasswordValidation {
     public static boolean checkPassword(String password) {
         return password.length() > 25
-                && password.chars().anyMatch(i -> i >= 48 && i <= 57)
+                && password.chars().anyMatch(Character::isDigit)
                 && !Objects.equals(password, password.toLowerCase())
                 && !Objects.equals(password, password.toUpperCase());
     }
